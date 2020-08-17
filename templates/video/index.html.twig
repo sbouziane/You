@@ -1,0 +1,162 @@
+{% extends 'base.html.twig' %}
+{% block oneSignal %}
+{% endblock %}
+{% if empty == true %}
+    {% set title = videoTitle|clean %}
+    {% set id = videoId %}
+    {% set singleColumn = true %}
+{% else %}
+    {% set title = video.item.snippet.title|clean %}
+    {% set id = video.item.id %}
+    {% set singleColumn = false %}
+{% endif %}
+
+{% block title %}تحميل أغنية {{ title }} MP3{% endblock %}
+{% block meta_tags %}
+    <META NAME="ROBOTS" CONTENT="NOINDEX, NOFOLLOW">
+{% endblock %}
+{% block share %}
+    <meta property="og:url"
+          content="{{ url('songDownload', {'videoId':id, 'videoTitle':title|slugify}) }}" />
+    <meta property="og:type"
+          content="article" />
+    <meta property="og:title"
+          content="{{ title }} | {{site_config.site_domain}}" />
+    <meta property="og:description"
+          content="تحميل أغنية {{ title }} MP3" />
+    <meta property="og:image"
+          content="https://img.youtube.com/vi/{{ id }}/hqdefault.jpg"
+    />
+{% endblock %}
+{% block body %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h2 class="pageHeader text-center">تحميل {{ title }} mp3</h2>
+            <div style="margin-bottom: 30px;"></div>
+
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-12 col-md-4">
+            <div class="song-info">
+                <div class="song-image visible-xs visible-sm hidden-md hidden-lg">
+                    <div class="row">
+                        <div class="col-sm-6 col-xs-6">
+                            <img src="https://img.youtube.com/vi/{{ id }}/default.jpg" width="120px" height="90px" class="thumbnail"
+                                 title="تحميل أغنية {{ title }} mp3"
+                                 alt="تحميل أغنية {{ title }} mp3">
+                        </div>
+                        <div class="col-sm-6 col-xs-6 ">
+                            <div class="share-video-block text-center ">
+                                <h5>لاتنسى مشاركة الصفحة مع اصدقائك:</h5>
+                                <a href="http://www.facebook.com/sharer/sharer.php?u={{ url('songDownload', {'videoId':id, 'videoTitle':title|slugify}) }}"
+                                   title="مشاركة {{ title }} على الفيسبوك " class="shareButtonLink" target="_blank">
+                                    <i class="fa fa-facebook shareButton"></i>
+                                </a>
+                                <a href="http://twitter.com/share?text={{ title }}&url={{ url('songDownload', {'videoId':id, 'videoTitle':title|slugify}) }}&via=muzzikka"
+                                   title="مشاركة {{ title }} على تويتر " class="shareButtonLink" target="_blank">
+                                    <i class="fa fa-twitter shareButton"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="song-image visible-lg visible-md hidden-xs hidden-sm">
+                    <img src="https://img.youtube.com/vi/{{ id }}/mqdefault.jpg" width="330px" height="190px" class="thumbnail"
+                         title="تحميل أغنية {{ title }} mp3"
+                         alt="تحميل أغنية {{ title }} mp3">
+                    <div style="margin-bottom: 10px;"></div>
+                    <div class="share-video-block text-center ">
+                        <h5>لاتنسى مشاركة الصفحة مع اصدقائك:</h5>
+                        <a href="http://www.facebook.com/sharer/sharer.php?u={{ url('songDownload', {'videoId':id, 'videoTitle':title|slugify}) }}"
+                           title="مشاركة {{ title }} على الفيسبوك " class="shareButtonLink" target="_blank">
+                            <i class="fa fa-facebook shareButton"></i>
+                        </a>
+                        <a href="http://twitter.com/share?text={{ title }}&url={{ url('songDownload', {'videoId':id, 'videoTitle':title|slugify}) }} | {{site_config.site_domain}}&via={{site_config.site_domain}}"
+                           title="مشاركة {{ title }} على تويتر " class="shareButtonLink" target="_blank">
+                            <i class="fa fa-twitter shareButton"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-8">
+            <table class="table table-bordered table-responsive downloadTable">
+                <tr>
+                    <td>إسم الأغنية</td>
+                    <td>{{ title }} mp3</td>
+                </tr>
+                {% if loadMoreVideoData == true and empty == false %}
+                    <tr>
+                        <td>رفع بواسطة</td>
+                        <td>{{ video.item.snippet.channelTitle }}</td>
+                    </tr>
+                {% endif %}
+                <!--
+                <tr>
+                    <td>التحميل بصيغة MP3</td>
+                    <td>
+                        <iframe class="new-download" src="//ytmp3.mobi/button-api/#{{id}}|mp3|c23616|fcfcfc" scrolling="no"></iframe>
+                    </td>
+                </tr>
+                -->
+                <tr>
+                    <td>التحميل بصيغة MP3</td>
+                    <td>
+                        <iframe src="https://www.yt-download.org/@api/button/mp3/{{id}}" width="100%" height="100px" scrolling="no" style="border:none;"></iframe>
+                    </td>
+                </tr>
+                <tr>
+                    <td>التحميل بصيغة MP4</td>
+                    <td>
+                        <iframe src="https://www.yt-download.org/@api/button/videos/{{id}}" width="100%" height="100px" scrolling="no" style="border:none;"></iframe>
+                    </td>
+                </tr>
+                <!--
+                <tr>
+                    <td>التحميل بصيغة MP4</td>
+                    <td>
+                        <iframe class="new-download" src="//ytmp3.mobi/button-api/#{{id}}|mp4|c23616|fcfcfc" scrolling="no"></iframe>
+                    </td>
+                </tr>
+                --> 
+                <tr>
+                    <td>مشاهدة</td>
+                    <td>
+                        <button id="watchButton0" title="مشاهدة أغنية {{ title }}"
+                                class="btnwatch"><i class="fa fa-eye"></i> مشاهدة
+                        </button>
+                        <input type="hidden" id="videoId0" value="{{ id }}">
+
+                        <div class="col-sm-12 col-md-12">
+                            <br>
+                            <div class="divIframe" id="divIframe0"></div>
+
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    {% if loadMoreVideoData == true and empty == false %}
+        {% if video.related is defined and video.related is not null %}
+            <div class="row">
+                <div class="col-sm-12 col-md-12">
+                    <h2>حمل أيضا:</h2>
+                    <br>
+                    <div class="list-group">
+                        {% for elm in video.related %}
+                            {% set text = elm.title|clean %}
+                            <a href="{{ path('search_page',{'query': text|replace({' ': '-'})}) }}"
+                               class="list-group-item relatedElement my-list" title="{{ text }}">
+                                <i class="fa fa-music musicIcone"></i>
+                                {{ text }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endif %}
+{% endblock %}

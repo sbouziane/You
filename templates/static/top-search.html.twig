@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}الاغاني الأكثر بحثا على الموقع {% endblock %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <div class="list-group">
+                <a class="list-group-item active homeHeader my-list">
+                    <h2 class="list-group-item-heading text-center">
+                        محرك بحث الاغاني العربية
+                    </h2>
+                    <h5 class="text-center">أخر الاغاني المضافة الى موقعنا</h5>
+                </a>
+                {% if pagination is defined and pagination is not empty %}
+                    {% for search in pagination %}
+                        {% set text = search.searchText|clean %}
+                        <a href="{{ path('search_page',{'query': text|replace({' ': '-'})}) }}"
+                           class="list-group-item searchElements my-list" title="{{ text }}">
+                            <i class="fa fa-music musicIcone"></i>
+                            {{ text }}</a>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+            <div class="col-md-12 col-sm-12 col-12 text-center">
+                {{ knp_pagination_render(pagination) }}
+                <div class="separator"></div>
+            </div>
+    </div>
+{% endblock %}

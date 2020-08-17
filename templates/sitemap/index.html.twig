@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    {% for i_page in 1..nbOfSiteMaps %}
+        <sitemap>
+            <loc>{{ url('new-sitemap-page', {page: i_page})}}</loc>
+        </sitemap>
+    {% endfor %}
+</sitemapindex>

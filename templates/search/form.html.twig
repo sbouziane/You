@@ -1,0 +1,13 @@
+<div class="row searchBox">
+    <div class="col-sm-12 col-md-8 col-md-offset-2 text-center">
+        {{ form_start(form, {'action': path('searchAction'), 'method': 'POST'}) }}
+            <div class="input-group">
+                {{ form_widget(form.searchText) }}
+                <span class="input-group-btn">
+                    {{ form_widget(form.search,{ 'label': site_config.search_title }) }}
+                </span>
+            </div>
+        {{ form_end(form) }}
+    </div>
+    <div class="col-md-offset-2 "></div>
+</div>

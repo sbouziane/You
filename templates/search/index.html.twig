@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ searchText }} MP3{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-sm-12 col-md-12">
+            <h1 class="pageHeader text-center">تحميل {{ searchText }} mp3</h1>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        {% if videos is not empty %}
+        {% for video in videos %}
+            <div class="col-sm-12 col-md-12 videoBloc">
+                <div class="col-sm-6 col-md-10 ">
+                    <div class="videoDesc">
+                        <span class="videotitle">{{ video.snippet.title|clean }} mp3</span>
+                    </div>
+                    <div class="videoWatchDown">
+                        <button id="watchButton{{ loop.index }}"
+                                title="مشاهدة أغنية {{ video.snippet.title|clean }}"
+                                class="btnwatch"><i class="fa fa-eye"></i> مشاهدة
+                        </button>
+                        <a href="{{ path('songDownload', {
+                            'videoId': video.id.videoId,
+                            'videoTitle': video.snippet.title|clean|replace({' ': '-'})}) }}"
+                           title="تحميل أغنية {{ video.snippet.title|clean }} بصيغة mp3"> <i
+                                    class="fa fa-download"></i> تحمـيـل </a>
+                        <input type="hidden" id="videoId{{ loop.index }}" value="{{ video.id.videoId }}">
+                    </div>
+                </div>
+                <br>
+                <div class="col-sm-6 col-md-2">
+                    <img src="https://img.youtube.com/vi/{{ video.id.videoId }}/default.jpg" width="120px" height="90px" class="videosImage lazy"
+                         title="أغنية {{ video.snippet.title|clean }} mp3"
+                         alt="أغنية {{ video.snippet.title|clean }} mp3">
+                </div>
+                <div class="col-sm-12 col-md-12">
+                    <div class="divIframe" id="divIframe{{ loop.index }}"></div>
+                </div>
+            </div>
+        {% endfor %}
+        {% else %}
+            <div class="col-sm-12 col-md-12">
+                <h3 class="notFound text-center">حدث مشكل في الحصول على النتائج, قم بتثحديث الصفحة حتى تحصل على النتائج</h3>
+            </div>
+            <br><br>
+        {% endif %}
+    </div>
+{% endblock %}

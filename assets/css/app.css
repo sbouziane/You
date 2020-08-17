@@ -1,0 +1,248 @@
+/*Basic config*/
+html, body{
+    padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 100%;
+    font-family: 'Almarai', sans-serif;
+}
+
+#wrap {
+    min-height: 100%;
+}
+
+#main {
+    overflow:auto;
+    padding-bottom:260px; /* this needs to be bigger than footer height*/
+}
+
+/*Footer*/
+.footer {
+    position: relative;
+    margin-top: -240px; /* negative value of footer height */
+    height: 240px;
+    clear:both;
+    padding-top:20px;
+}
+footer{
+    border-top: #D3D3D3 solid 2px;
+    background-color:#c23616;
+    color:#ffffff;
+    font-size: 14px;
+    font-family: 'Almarai', cursive;
+}
+footer a, .footerElemnt a{
+    text-decoration: none;
+    color:#ffffff;
+
+}
+.footerElemnt{
+    margin-bottom: 20px;
+}
+/*navbar*/
+.navbar {
+    background-color:#c23616;
+    color:#ffffff;
+    border-radius:0 !important;
+    border-width: 0 !important;
+    width: 100% !important;
+    font-family: 'Almarai', cursive;
+    font-weight: bold;
+}
+
+.navbar li a,
+.navbar .navbar-brand {
+    color: #FFFFFF !important;
+}
+.navbar-left a i{
+    color: #FFFFFF;
+}
+.navbar-nav li a:hover,
+.navbar-nav li.active a {
+    color:#ffffff !important;
+
+}
+
+.navbar-default .navbar-toggle {
+    border-color: transparent;
+    color: #ffffff;
+}
+
+#hamburger .icon-bar {
+    background: white;
+}
+
+#hamburger:hover,
+#hamburger.is-active {
+    background: white !important;
+}
+
+#hamburger:hover .icon-bar,
+#hamburger.is-active .icon-bar {
+    background: #c23616 !important;
+}
+
+#hamburger:focus {
+    background: #c23616;
+}
+
+#hamburger:focus .icon-bar {
+    background: #FFF;
+}
+.nav-site-desc{
+    height: 50px;
+    line-height: 49px;
+}
+/*searchBox*/
+.searchBox{
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+.searchBox input, .searchBox button{
+    height: 50px;
+    font-size: 16px;
+    font-family: 'Almarai', sans-serif;
+    border-radius: 0px !important;
+}
+.searchBox button{
+    width: 80px;
+    font-weight: bold;
+}
+
+/*latestSearchs*/
+.my-list{
+    border-radius: 0px !important;
+}
+.homeHeader{
+    font-family: 'Almarai', sans-serif;
+    border-color: #c9c9c9 !important;
+    color: #333333 !important;
+    background-color: #FFFFFF !important;
+}
+.searchElements, .relatedElement{
+    font-family: 'Almarai', sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    color: #222 !important;
+}
+.musicIcone{
+    color: #c23616;
+    margin-left: 5px;
+}
+.pageHeader, .notFound, .contact {
+    font-family: 'Almarai', sans-serif;
+    margin-bottom: 10px;
+}
+/*search*/
+.videoBloc{
+    margin-bottom: 15px;
+    border: #c9c9c9 1px solid;
+    padding: 10px;
+
+}
+.videotitle{
+    font-size: 16px;
+    font-family: 'Almarai', cursive;
+}
+.videosImage{
+    border: #c23616 3px solid;
+}
+.videoDesc{
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+.vidButton{
+    margin-left: 20px;
+}
+.divIframe{
+    display: none;
+}
+.videoWatchDown a, .videoWatchDown button {
+    padding: 10px 16px;
+    text-decoration: none;
+    font-size: 14px;
+    border: #D3D3D3 1px solid;
+    font-family: 'Almarai', cursive;
+    margin-left: 20px;
+    background-color: #fcfcfc !important;
+    line-height: initial !important;
+    color: #3742fa !important;
+}
+/*See more*/
+.seeAll {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+.seeAll a {
+    display: block;
+    padding: 10px 30px;
+    text-decoration: none;
+    font-size: 16px;
+    border: #fcfcfc 2px solid;
+    font-family: 'Almarai', sans-serif;
+    background-color: #c23616;
+    font-weight: bold;
+    clear: both;
+    color: #FFFFFF;
+}
+/*video*/
+.downloadTable{
+    font-family: 'Almarai', sans-serif;
+    font-size: 16px;
+}
+.downloadButtons, #watchButton0{
+    border: 0;
+    margin-top: 9px;
+    background: #f2f1f0 !important;
+    color: #1e3799 !important;
+    height: 40px;
+    width: 200px;
+    min-width: 200px;
+}
+.new-download{
+    font-family: 'Almarai', sans-serif;
+    width: 200px;
+    height: 40px;
+    border: 0 none;
+    background: #c23616 !important;
+    color: #fcfcfc !important;
+}
+.share-video-block{
+     font-family: 'Almarai', sans-serif;
+ }
+.shareButtonLink{
+    text-decoration: none;
+    color: #FFFFFF;
+}
+ .shareButton{
+    border: 2px #fcfcfc solid;
+    font-size: 18px;
+    background-color: #c23616;
+    width: 35px;
+     color: #FFFFFF;
+    padding: 8px;
+}
+.shareButtonLink:hover{
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+@keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeOut {
+    to {
+        opacity: 0;
+    }
+}
+
+.isPaused {
+    animation-play-state: paused;
+}
+
+canvas {
+  -webkit-transform: translateZ(0);
+}

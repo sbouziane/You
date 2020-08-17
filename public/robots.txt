@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /download/*
+Disallow: /404/
+Disallow: /error/
